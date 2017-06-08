@@ -5,6 +5,7 @@
  */
 package test;
 
+import java.util.Timer;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -22,19 +23,30 @@ import javafx.stage.Stage;
  * @author gavin1706s
  */
 public class Test extends Application {
+    // Timer To Make cps to cookies
+    public class cps2Cookies {
+        public void run() {
+            cookies += cps;
+        }
+    }
+    
     // Number Of Cookies You Have
-    private int points;    
+    private int cookies;    
     // Number Of Cookies You Get Per Click
     private int cpc;    
     // Number Of Cookies Per Second
     private int cps;
-    
+    // X-Cord For All The Buttons
     public int x = 200;
+    // Stuff For The Timer
+    //Timer tim = new Timer();
+    //tim.schedule(new cps2Cookies(),0 , 1000);
+    
     
     @Override
     public void start(Stage primaryStage) {
         // Add The Vars
-        points = 0;
+        cookies = 0;
         cpc = 1;
         cps = 0;
         
@@ -141,18 +153,15 @@ public class Test extends Application {
         rapidClickBtn,godClickBtn,masterClickBtn,fireClickBtn,bakerBtn,
         chefBtn,linguiniBtn,godBtn,johnBtn,guyBtn,gordonBtn,cheat);
         
-        /*,
-        */
-        
         // Handles Pressing Of Cookie
         iv.setOnMousePressed((e)->{
             iv.setImage(clikdpic);
-            points+= cpc;
+            cookies+= cpc;
         });
-        
+        // Handles Releasing Of Cookie
         iv.setOnMouseReleased((e)->{
             iv.setImage(pic);
-            lbl.setText(points+"");
+            lbl.setText(cookies+"");
         });
         
         // Handles Cheating
@@ -162,55 +171,63 @@ public class Test extends Application {
             System.out.println("You have Won!!!!!!!?!!!");
         }else{
             cheat.clear();
-        }
-        
-        
-        });
-        
+        }        
+        });        
         // Handles double Clicks
         doubleClickBtn.setOnMousePressed((e)->{
-            if (points >= 64){
-                points -= 64;
+            if (cookies >= 64){
+                cookies -= 64;
                 cpc += 2;
             }            
-            lbl.setText(points+"");
+            lbl.setText(cookies+"");
         });
+        // Handles Double Clicks
         multiClickBtn.setOnMousePressed((e)->{
-            if (points >= 256){
-                points -= 256;
+            if (cookies >= 256){
+                cookies -= 256;
                 cpc += 3;
             }            
-            lbl.setText(points+"");
+            lbl.setText(cookies+"");
         });
+        // Handles Rapid Clicks
         rapidClickBtn.setOnMousePressed((e)->{
-            if (points >= 2048){
-                points -= 2048;
+            if (cookies >= 2048){
+                cookies -= 2048;
                 cpc += 16;
             }            
-            lbl.setText(points+"");
+            lbl.setText(cookies+"");
         });
+        // Handles God Clicks
         godClickBtn.setOnMousePressed((e)->{
-            if (points >= 16384){
-                points -= 16384;
+            if (cookies >= 16384){
+                cookies -= 16384;
                 cpc += 64;
             }            
-            lbl.setText(points+"");
+            lbl.setText(cookies+"");
         });
+        // Handles Master Clicks
         masterClickBtn.setOnMousePressed((e)->{
-            if (points >= 131072){
-                points -= 131072;
+            if (cookies >= 131072){
+                cookies -= 131072;
                 cpc += 256;
             }            
-            lbl.setText(points+"");
+            lbl.setText(cookies+"");
         });
+        // Handles Fire Clicks
         fireClickBtn.setOnMousePressed((e)->{
-            if (points >= 1048576){
-                points -= 1048576;
+            if (cookies >= 1048576){
+                cookies -= 1048576;
                 cpc += 1024;
             }            
-            lbl.setText(points+"");
+            lbl.setText(cookies+"");
         });
-        
+        //  Handles Baker Clicks
+        bakerBtn.setOnMousePressed((e) ->{
+            if (cookies >= 64){
+                cookies -= 64;
+                cps += 1;
+            }
+        });
         
         // Shows Window
         Scene scene = new Scene(root, 500, 500);
@@ -220,6 +237,7 @@ public class Test extends Application {
         primaryStage.show();
     }
     
+    // The Second Screen
     public void start2(Stage secondaryStage) {
         
         Label lbl = new Label("You have won!");
@@ -235,9 +253,10 @@ public class Test extends Application {
         secondaryStage.setScene(scene);
         secondaryStage.hide();
     }
-
+    
+    // Adds cookies
     public void addPoints(){
-        points++;
+        cookies++;
     }
     /**
      * @param args the command line arguments
