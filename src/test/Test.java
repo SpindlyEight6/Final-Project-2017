@@ -38,6 +38,8 @@ public class Test extends Application {
         cpc = 1;
         cps = 0;
         
+        Application.setUserAgentStylesheet(getClass().getResource("stylesheet.css").toExternalForm());
+        
         // Adds the pictures        
         Image pic = new Image("cookie.png");    
         Image clikdpic = new Image("smallcookie.png");                
@@ -212,6 +214,7 @@ public class Test extends Application {
         
         // Shows Window
         Scene scene = new Scene(root, 500, 500);
+        scene.getStylesheets().add(getClass().getResource("/stylesheet.css").toExternalForm());
         primaryStage.setTitle("Cookie Clicker");
         primaryStage.setScene(scene);
         primaryStage.show();
