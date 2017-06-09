@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -94,26 +95,28 @@ public class Test extends Application {
         
         // Adds The Double Click Stuff 
         Button doubleClickBtn = new Button();
-        doubleClickBtn.setText("Buy Double Click");
+        doubleClickBtn.setText("Buy Double Click (+2 Click)");
         doubleClickBtn.setLayoutX(x);
         doubleClickBtn.setLayoutY(50);
         Label doubleclicklbl = new Label();
         
+        
         // Adds The Multi Click Button
         Button multiClickBtn = new Button();
-        multiClickBtn.setText("Buy Multi-Click");
+        multiClickBtn.setText("Buy Multi-Click (+3 Click)");
         multiClickBtn.setLayoutX(x);
         multiClickBtn.setLayoutY(75);
+       
         
         // Adds The Rapid Click Button
         Button rapidClickBtn = new Button();
-        rapidClickBtn.setText("Buy Rapid Click");
+        rapidClickBtn.setText("Buy Rapid Click (+16 Click)");
         rapidClickBtn.setLayoutX(x);
         rapidClickBtn.setLayoutY(100);
         
         // Adds The God Click Button
         Button godClickBtn = new Button();
-        godClickBtn.setText("Buy God Click");
+        godClickBtn.setText("Buy God Click (+64 Click)");
         godClickBtn.setLayoutX(x);
         godClickBtn.setLayoutY(125);
         
