@@ -6,6 +6,7 @@
 package test;
 
 import java.util.Timer;
+import java.util.TimerTask;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -22,14 +23,8 @@ import javafx.stage.Stage;
  *
  * @author gavin1706s
  */
-public class Test extends Application {
-    // Timer To Make cps to cookies
-    public class cps2Cookies {
-        public void run() {
-            cookies += cps;
-        }
-    }
-    
+
+public class Test extends Application {    
     // Number Of Cookies You Have
     private int cookies;    
     // Number Of Cookies You Get Per Click
@@ -38,18 +33,41 @@ public class Test extends Application {
     private int cps;
     // X-Cord For All The Buttons
     public int x = 200;
-    // Stuff For The Timer
-    //Timer tim = new Timer();
-    //tim.schedule(new cps2Cookies(),0 , 1000);
-    
     
     @Override
     public void start(Stage primaryStage) {
-        // Add The Vars
+        // Money
         cookies = 0;
+        
+        // Cookies Per Click
         cpc = 1;
+        
+        // Cookies Per Second
         cps = 0;
         
+        // Condition For the Timer To Run
+        boolean run = true;
+        
+        // Makes A Timer Named Tim
+        Timer tim = new Timer();
+        
+        // TimerTask To Make cps To cookies
+        class cps2Cookies extends TimerTask {
+            @Override
+            public void run() {
+                if (run)  {
+                    cookies += cps;  
+                }else{
+                    tim.cancel();
+                    tim.purge();
+                }
+                
+            }
+        }        
+        // Makes Tim Run cps2Cookies
+        tim.schedule(new cps2Cookies(), 0, 1000);
+        
+        // Add CSS Styling To The Application
         Application.setUserAgentStylesheet(getClass().getResource("stylesheet.css").toExternalForm());
         
         // Adds the pictures        
@@ -158,6 +176,7 @@ public class Test extends Application {
             iv.setImage(clikdpic);
             cookies+= cpc;
         });
+        
         // Handles Releasing Of Cookie
         iv.setOnMouseReleased((e)->{
             iv.setImage(pic);
@@ -169,10 +188,13 @@ public class Test extends Application {
         if (cheat.getText().equals("win")){
             // Do The Stuff to Change To A Win Screen
             System.out.println("You have Won!!!!!!!?!!!");
+            tim.cancel();
+            tim.purge();
         }else{
             cheat.clear();
         }        
-        });        
+        }); 
+        
         // Handles double Clicks
         doubleClickBtn.setOnMousePressed((e)->{
             if (cookies >= 64){
@@ -181,6 +203,7 @@ public class Test extends Application {
             }            
             lbl.setText(cookies+"");
         });
+        
         // Handles Double Clicks
         multiClickBtn.setOnMousePressed((e)->{
             if (cookies >= 256){
@@ -189,6 +212,7 @@ public class Test extends Application {
             }            
             lbl.setText(cookies+"");
         });
+        
         // Handles Rapid Clicks
         rapidClickBtn.setOnMousePressed((e)->{
             if (cookies >= 2048){
@@ -197,6 +221,7 @@ public class Test extends Application {
             }            
             lbl.setText(cookies+"");
         });
+        
         // Handles God Clicks
         godClickBtn.setOnMousePressed((e)->{
             if (cookies >= 16384){
@@ -205,6 +230,7 @@ public class Test extends Application {
             }            
             lbl.setText(cookies+"");
         });
+        
         // Handles Master Clicks
         masterClickBtn.setOnMousePressed((e)->{
             if (cookies >= 131072){
@@ -213,6 +239,7 @@ public class Test extends Application {
             }            
             lbl.setText(cookies+"");
         });
+        
         // Handles Fire Clicks
         fireClickBtn.setOnMousePressed((e)->{
             if (cookies >= 1048576){
@@ -221,6 +248,7 @@ public class Test extends Application {
             }            
             lbl.setText(cookies+"");
         });
+        
         //  Handles Baker Clicks
         bakerBtn.setOnMousePressed((e) ->{
             if (cookies >= 64){
@@ -231,7 +259,7 @@ public class Test extends Application {
         
         // Shows Window
         Scene scene = new Scene(root, 500, 500);
-        scene.getStylesheets().add(getClass().getResource("/stylesheet.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
         primaryStage.setTitle("Cookie Clicker");
         primaryStage.setScene(scene);
         primaryStage.show();
