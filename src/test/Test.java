@@ -56,12 +56,11 @@ public class Test extends Application {
             @Override
             public void run() {
                 if (run)  {
-                    cookies += cps;  
+                    cookies += cps;
                 }else{
                     tim.cancel();
                     tim.purge();
-                }
-                
+                }                
             }
         }        
         // Makes Tim Run cps2Cookies
@@ -76,12 +75,11 @@ public class Test extends Application {
         ImageView iv = new ImageView(pic);
         iv.setLayoutY(150);
         
-        // Adds The Label For Points
+        // Adds The Label For Cookies
         Label lbl = new Label("");
         lbl.setFont(Font.font(20));
         lbl.setLayoutX(85);
         lbl.setLayoutY(350);
-        
         // Cheat For The Game
         PasswordField cheat = new PasswordField();
         cheat.setPromptText("Enter the Password.");
@@ -181,6 +179,12 @@ public class Test extends Application {
         iv.setOnMouseReleased((e)->{
             iv.setImage(pic);
             lbl.setText(cookies+"");
+        });
+        
+        // Stops Tim After The App Closes
+        primaryStage.setOnCloseRequest((e) -> {
+            tim.cancel();
+            tim.purge();
         });
         
         // Handles Cheating
