@@ -9,6 +9,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -69,6 +70,16 @@ public class Test extends Application {
         // Add CSS Styling To The Application
         Application.setUserAgentStylesheet(getClass().getResource("stylesheet.css").toExternalForm());
         
+        // Groups For The Stuff
+        Group root1 = new Group();
+        Group root2 = new Group();
+        
+        // Setting The Scenes
+        final Scene game = new Scene(root1, 500, 500);
+        final Scene win = new Scene(root2, 500, 500);
+        
+        // Something With the Screens 
+        
         // Adds the pictures        
         Image pic = new Image("cookie.png");    
         Image clikdpic = new Image("smallcookie.png");                
@@ -76,10 +87,10 @@ public class Test extends Application {
         iv.setLayoutY(150);
         
         // Adds The Label For Cookies
-        Label lbl = new Label("");
-        lbl.setFont(Font.font(20));
-        lbl.setLayoutX(85);
-        lbl.setLayoutY(350);
+        Label cookieNum = new Label("");
+        cookieNum.setFont(Font.font(20));
+        cookieNum.setLayoutX(85);
+        cookieNum.setLayoutY(350);
         // Cheat For The Game
         PasswordField cheat = new PasswordField();
         cheat.setPromptText("Enter the Password.");
@@ -163,11 +174,21 @@ public class Test extends Application {
         gordonBtn.setLayoutX(x);
         gordonBtn.setLayoutY(350);
         
-        // Makes Window And Adds Things To It
-        Pane root = new Pane();
-        root.getChildren().addAll(iv,lbl,doubleClickBtn,multiClickBtn,
+        // Makes Window And Adds Things To It For Game 
+        root1.getChildren().addAll(iv,cookieNum,doubleClickBtn,multiClickBtn,
         rapidClickBtn,godClickBtn,masterClickBtn,fireClickBtn,bakerBtn,
         chefBtn,linguiniBtn,godBtn,johnBtn,guyBtn,gordonBtn,cheat);
+        
+        // All The Stuff For Win Screen
+        
+        // Misc. Label
+        Label winLbl = new Label("You have won!");
+        winLbl.setFont(Font.font(20));
+        winLbl.setLayoutX(85);
+        winLbl.setLayoutY(350);
+        
+        root2.getChildren().addAll(winLbl);
+        // End Win Screen Stuff
         
         // Handles Pressing Of Cookie
         iv.setOnMousePressed((e)->{
@@ -178,7 +199,7 @@ public class Test extends Application {
         // Handles Releasing Of Cookie
         iv.setOnMouseReleased((e)->{
             iv.setImage(pic);
-            lbl.setText(cookies+"");
+            cookieNum.setText(cookies+"");
         });
         
         // Stops Tim After The App Closes
@@ -192,6 +213,7 @@ public class Test extends Application {
         if (cheat.getText().equals("win")){
             // Do The Stuff to Change To A Win Screen
             System.out.println("You have Won!!!!!!!?!!!");
+            primaryStage.setScene(win);
             tim.cancel();
             tim.purge();
         }else{
@@ -205,7 +227,7 @@ public class Test extends Application {
                 cookies -= 64;
                 cpc += 2;
             }            
-            lbl.setText(cookies+"");
+            cookieNum.setText(cookies+"");
         });
         
         // Handles Double Clicks
@@ -214,7 +236,7 @@ public class Test extends Application {
                 cookies -= 256;
                 cpc += 3;
             }            
-            lbl.setText(cookies+"");
+            cookieNum.setText(cookies+"");
         });
         
         // Handles Rapid Clicks
@@ -223,7 +245,7 @@ public class Test extends Application {
                 cookies -= 2048;
                 cpc += 16;
             }            
-            lbl.setText(cookies+"");
+            cookieNum.setText(cookies+"");
         });
         
         // Handles God Clicks
@@ -232,7 +254,7 @@ public class Test extends Application {
                 cookies -= 16384;
                 cpc += 64;
             }            
-            lbl.setText(cookies+"");
+            cookieNum.setText(cookies+"");
         });
         
         // Handles Master Clicks
@@ -241,7 +263,7 @@ public class Test extends Application {
                 cookies -= 131072;
                 cpc += 256;
             }            
-            lbl.setText(cookies+"");
+            cookieNum.setText(cookies+"");
         });
         
         // Handles Fire Clicks
@@ -250,7 +272,7 @@ public class Test extends Application {
                 cookies -= 1048576;
                 cpc += 1024;
             }            
-            lbl.setText(cookies+"");
+            cookieNum.setText(cookies+"");
         });
         
         //  Handles Baker Clicks
@@ -259,31 +281,12 @@ public class Test extends Application {
                 cookies -= 64;
                 cps += 1;
             }
-        });
+        });        
         
-        // Shows Window
-        Scene scene = new Scene(root, 500, 500);
-        scene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
+        // Shows Window\
         primaryStage.setTitle("Cookie Clicker");
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-    
-    // The Second Screen
-    public void start2(Stage secondaryStage) {
-        
-        Label lbl = new Label("You have won!");
-        lbl.setFont(Font.font(20));
-        lbl.setLayoutX(85);
-        lbl.setLayoutY(350);
-        
-        Pane root = new Pane();
-        root.getChildren().addAll(lbl);
-        
-        Scene scene = new Scene(root, 500, 500);
-        secondaryStage.setTitle("Cookie Clicker");
-        secondaryStage.setScene(scene);
-        secondaryStage.hide();
     }
     
     // Adds cookies
