@@ -67,9 +67,6 @@ public class Test extends Application {
         // Makes Tim Run cps2Cookies
         tim.schedule(new cps2Cookies(), 0, 1000);
         
-        // Add CSS Styling To The Application
-        Application.setUserAgentStylesheet(getClass().getResource("stylesheet.css").toExternalForm());
-        
         // Groups For The Stuff
         Group root1 = new Group();
         Group root2 = new Group();
@@ -78,8 +75,8 @@ public class Test extends Application {
         final Scene game = new Scene(root1, 500, 500);
         final Scene win = new Scene(root2, 500, 500);
         
-        // Something With the Screens 
-        
+        // Add CSS Styling To The Application
+        game.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
         // Adds the pictures        
         Image pic = new Image("cookie.png");    
         Image clikdpic = new Image("smallcookie.png");                
@@ -285,7 +282,7 @@ public class Test extends Application {
         
         // Shows Window\
         primaryStage.setTitle("Cookie Clicker");
-        primaryStage.setScene(scene);
+        primaryStage.setScene(game);
         primaryStage.show();
     }
     
