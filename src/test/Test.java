@@ -122,55 +122,55 @@ public class Test extends Application {
         
         // Adds The Master Click Button
         Button masterClickBtn = new Button();
-        masterClickBtn.setText("Buy Master Click");
+        masterClickBtn.setText("Buy Master Click (+256 Click)");
         masterClickBtn.setLayoutX(x);
         masterClickBtn.setLayoutY(150);
         
         // Adds The Fire Click Button
         Button fireClickBtn = new Button();
-        fireClickBtn.setText("Buy Fire Click");
+        fireClickBtn.setText("Buy Fire Click (+1,024 Click)");
         fireClickBtn.setLayoutX(x);
         fireClickBtn.setLayoutY(175);
         
         // Adds The Baker Button
         Button bakerBtn = new Button();
-        bakerBtn.setText("Buy Baker");
+        bakerBtn.setText("Buy Baker (+1/s)");
         bakerBtn.setLayoutX(x);
         bakerBtn.setLayoutY(200);
         
         // Adds The Chef Button
         Button chefBtn = new Button();
-        chefBtn.setText("Buy Chef");
+        chefBtn.setText("Buy Chef (+8/s)");
         chefBtn.setLayoutX(x);
         chefBtn.setLayoutY(225);
         
         // Adds The Linguini Button
         Button linguiniBtn = new Button();
-        linguiniBtn.setText("Buy Linguini");
+        linguiniBtn.setText("Buy Linguini(+32/s)");
         linguiniBtn.setLayoutX(x);
         linguiniBtn.setLayoutY(250);
         
         // Adds The God Button
         Button godBtn = new Button();
-        godBtn.setText("Buy God");
+        godBtn.setText("Buy God (+128/s)");
         godBtn.setLayoutX(x);
         godBtn.setLayoutY(275);
         
         // Adds The John Cena Button do do do do
         Button johnBtn = new Button();
-        johnBtn.setText("Buy John Cena");
+        johnBtn.setText("Buy John Cena (+1,024/s)");
         johnBtn.setLayoutX(x);
         johnBtn.setLayoutY(300);
         
         // Adds The Guy Fieri Button
         Button guyBtn = new Button();
-        guyBtn.setText("Buy Guy Fieri");
+        guyBtn.setText("Buy Guy Fieri (+8,192/s)");
         guyBtn.setLayoutX(x);
         guyBtn.setLayoutY(325);
         
         // Adds The Gordan Ramsey Button
         Button gordonBtn = new Button();
-        gordonBtn.setText("Buy Gordon Ramsey");
+        gordonBtn.setText("Buy Gordon Ramsey (+32,768/s)");
         gordonBtn.setLayoutX(x);
         gordonBtn.setLayoutY(350);
         
