@@ -223,6 +223,9 @@ public class Test extends Application {
         // Misc. Label
         Label winLbl = new Label("You have won!");
         winLbl.setFont(Font.font(20));
+        System.out.println(win.getHeight());
+        System.out.println(win.getWidth());
+
         winLbl.setLayoutX(win.getWidth()/2);
         winLbl.setLayoutY(win.getHeight()/2);
         
